@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Countrylist from './Comp/Countrylist';
 
 function App() {
+
+  let [countries, setCountries] = useState([])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <select id='continent' className='dropClass'>
+        <option value="https://restcountries.com/v3.1/region/africa">Africa</option>
+        <option value="https://restcountries.com/v3.1/region/asia">Asia</option>
+        <option value="https://restcountries.com/v3.1/region/europe">Europe</option>
+      </select>
+      <button className='btnClass' onClick={async() => {
+        let url = document.querySelector("#continent").value
+        let response = await fetch(url)
+        let json = await response.json()
+        // console.log(json)
+        setCountries(json)
+      }}>Get Data</button>
+      <div>
+      {countries && <Countrylist info={countries}/>}
+      </div>
     </div>
   );
 }
