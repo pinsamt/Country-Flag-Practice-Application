@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Card } from 'react-bootstrap'
 
 const Country = ( {data} ) => {
     let [showInfo, setShowInfo] = useState(false)
@@ -10,6 +11,7 @@ const Country = ( {data} ) => {
     {showInfo && <p>Capital: {data.capital}</p>}
     {showInfo && <p>Population: {data.population}</p>}
     </div>
+    
   )
 }
 
