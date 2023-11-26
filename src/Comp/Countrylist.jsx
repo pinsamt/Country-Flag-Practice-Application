@@ -1,6 +1,6 @@
 import React from "react";
 import Country from "./Country";
-import Countrycard from "./Countrycard";
+import Countrycard from "./Country";
 
 const Countrylist = ({ info }) => {
   return (
@@ -9,7 +9,7 @@ const Countrylist = ({ info }) => {
       {info.map((countryObj, i) => {
         return (
           <li  className="center" key={i}>
-            <Countrycard data={countryObj} />
+            <Country data={countryObj} />
           </li>
         );
       })}
